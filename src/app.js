@@ -34,6 +34,7 @@ app.get('/apps', (req, res) => {
 		});
 	}
 
+	console.log('all results = ', results.length);
 	res.json(results);
 });
 
