@@ -58,7 +58,7 @@ describe('app modules', () => {
 				});
 		});
 
-		const sortValues = ['Rating', 'App'];
+		const sortValues = ['rating', 'app'];
 
 		sortValues.forEach((sortValue) => {
 			it('should return sorted aarray objects', () => {
@@ -80,6 +80,13 @@ describe('app modules', () => {
 						expect(sorted).to.be.true;
 					});
 			});
-		});
+        });
+      
+        it('should return 200 object with 1 arrays', ()=>{
+            return supertest(app)
+              .get('/apps')
+              .query({ sort: 'invalid'})
+              .expect(400,'Sort must be one of rating or app');
+          });  
 	});
 });
